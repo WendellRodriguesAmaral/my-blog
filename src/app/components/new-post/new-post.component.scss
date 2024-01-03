@@ -1,0 +1,48 @@
+@import "../../../assets/styles/colors.scss";
+@import '../../../assets/styles/details.scss';
+
+*{
+    background-color: white;
+}
+
+.new-post { 
+  @include b-shadow-default;
+  @include b-radius-default;
+
+  &__container {
+ 
+    //border: solid 1px #000;
+    height: auto;
+    display: flex;
+    @include b-radius-default;
+  }
+
+  &__photo {
+    
+    section {
+      width: 65%;
+      margin: auto;
+      
+
+      img {
+        border-radius: 20%;
+        @include b-shadow-default;
+      }
+    }
+  }
+
+  &__content {
+    section {
+      button {
+        border: solid .5px $grey-soft;
+        margin: auto;
+        border-radius: 100px;
+        @include b-shadow-default;
+        background-color: $grey-light;
+        font-size: 1.2rem;
+        @include font-default;
+        color: $blue-soft;
+      }
+    }
+  }
+}

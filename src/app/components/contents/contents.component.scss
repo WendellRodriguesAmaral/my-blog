@@ -1,0 +1,10 @@
+.contents{
+    width: 100%;
+    height: auto;    
+}
+
+
+div:nth-child(odd){
+    background-color: transparent;
+    border: solid 1px black;
+}

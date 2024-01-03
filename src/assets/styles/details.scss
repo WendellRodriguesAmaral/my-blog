@@ -1,0 +1,11 @@
+@mixin b-shadow-default{
+    box-shadow: 1px 1px 5px .1px $grey-soft;
+}
+
+@mixin b-radius-default{
+    border-radius: 5px;
+}
+
+@mixin font-default{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

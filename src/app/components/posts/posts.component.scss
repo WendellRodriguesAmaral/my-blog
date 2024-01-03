@@ -1,0 +1,10 @@
+@import "../../../assets/styles/colors.scss";
+@import '../../../assets/styles/details.scss';
+
+.posts{
+
+    &__container{
+        //@include b-shadow-default;
+        @include b-radius-default;
+    }
+}
