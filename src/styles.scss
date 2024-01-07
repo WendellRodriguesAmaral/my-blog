@@ -1,11 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import '/src/assets/styles/colors.scss';
+@import '/src/assets/styles/details.scss';
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     padding: 0;
-    background-color:#f4f2ee;
+    @include font-default;
     font-size: 99%;    
+}
+
+html,body{
+    background-color:#f4f2ee;
 }

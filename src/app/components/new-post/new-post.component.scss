@@ -33,6 +33,7 @@
 
   &__content {
     section {
+      
       button {
         border: solid .5px $grey-soft;
         margin: auto;
@@ -42,6 +43,11 @@
         font-size: 1.2rem;
         @include font-default;
         color: $blue-soft;
+
+        &:hover{         
+          color: $blue-powered;
+          box-shadow: none;
+        }
       }
     }
   }

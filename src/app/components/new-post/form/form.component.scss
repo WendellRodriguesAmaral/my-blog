@@ -1,0 +1,113 @@
+@import '../../../../assets/styles/colors.scss';
+@import '../../../../assets/styles/details.scss';
+
+@mixin inputTextArea {
+    padding: 5px;
+    padding-bottom: 0;
+    font-size: 18px;
+    width: 100%;
+}
+
+.form{
+    &__content{
+        //border:solid 1px black;
+    }
+
+    form{
+        padding:  0 2%;
+        fieldset{
+            width: 100%;
+            margin: auto;
+            margin-top: 10px;
+            //border:solid 1px black;
+
+            input{
+               @include inputTextArea;
+                &.title, &.url-image{
+                    border: none;
+                    border-bottom: solid 1px $grey-light;
+                    outline: none;
+
+                    &:focus{
+                        border-bottom:solid 2px $grey;
+                        
+                        &::placeholder{
+                            opacity: 0;
+                        }
+                    }
+                }
+            }
+
+
+            textarea {
+               @include inputTextArea;
+                
+                &.text{
+                    border: none;
+                    border-bottom: solid 1px $grey-light;
+                    outline: none;
+
+                    &:focus{
+                        border-bottom:solid 2px $grey;
+                        
+                        &::placeholder{
+                            opacity: 0;
+                        }
+                    }
+                }
+            }
+
+        }
+
+
+        div{         
+
+            section{
+                align-self: self-end;
+
+                &.radios-privacy{
+                    display: flex;
+                    font-size: 16px;               
+                    input{
+                        margin:0 8px;
+                    }
+                }
+
+                &.select-category{
+                    select{
+                        @include b-radius-default;
+                        background-color: $white;
+                        border-color: $grey-light;
+                        padding: 5px;
+                        font-size: 14px;
+                        width: 90%;                    
+                    }
+                }
+            }           
+        }
+
+        .actions{
+            button, input{
+                font-size: 16px;
+                padding: 8px;
+            }
+
+            button{
+                @include b-radius-default;
+                background-color: $blue-powered;
+                color: $white;
+                border: none;
+                cursor: pointer;
+            }
+
+            input{
+                @include b-radius-default;
+                background-color: $white;
+                border: none;
+                color:$red;
+                cursor: pointer;
+
+            }
+        }
+    }
+}

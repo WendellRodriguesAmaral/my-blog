@@ -9,6 +9,9 @@ import { FeedComponent } from './components/feed/feed.component';
 import { ContentsComponent } from './components/contents/contents.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { PostComponent } from './components/post/post.component';
+import { FormComponent } from './components/new-post/form/form.component';
+
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -19,11 +22,14 @@ import { PostComponent } from './components/post/post.component';
     FeedComponent,
     ContentsComponent,
     PostsComponent,
-    PostComponent
+    PostComponent,
+    FormComponent,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
