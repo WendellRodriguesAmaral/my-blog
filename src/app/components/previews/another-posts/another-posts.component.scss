@@ -1,0 +1,22 @@
+@import "../../../../assets/styles/colors.scss";
+@import "../../../../assets/styles/details.scss";
+
+.another-posts {
+  @include b-radius-default;
+  @include b-shadow-default;
+  @include font-default;
+
+  &>b {
+    color: $blue-soft;
+  }
+}
+
+span{
+    opacity: .6;
+    font-size: 90%;
+}
+
+li{
+    margin-top: 10px;
+
+}

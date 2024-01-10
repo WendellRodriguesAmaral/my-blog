@@ -7,6 +7,11 @@
     background-color: $white!important;
     @include b-shadow-default;
     z-index: 1;
+
+    position: fixed;
+    width: 100%;
+
+    
   .container {
     background-color: $white;
     display: flex;

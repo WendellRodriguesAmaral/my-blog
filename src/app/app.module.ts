@@ -12,6 +12,7 @@ import { PostComponent } from './components/post/post.component';
 import { FormComponent } from './components/new-post/form/form.component';
 
 import { SharedModule } from './shared/shared.module';
+import { PreviewsModule } from './components/previews/previews.module';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    PreviewsModule,
     SharedModule
   ],
   providers: [],

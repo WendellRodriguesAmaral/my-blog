@@ -1,0 +1,43 @@
+@import "../../../../assets/styles/colors.scss";
+@import "../../../../assets/styles/details.scss";
+
+.perfil__prev {
+
+  @include b-radius-default;
+  @include b-shadow-default;
+  @include font-default;
+
+  b {
+    color: $blue-soft;
+  }
+
+  &__info {
+    border-top: solid 4px $background;
+    margin-top: 28px;
+
+    .prev {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      img {
+        width: 33%;
+        object-fit: cover;
+        clip-path: circle(43%);
+        margin-top: -12%;       
+      }
+
+    }
+  }
+}
+
+span{
+    opacity: .5;
+}
+
+q{
+    font-style:italic;
+    font-size: 80%;
+    opacity: .7;
+    letter-spacing: .02rem;
+}

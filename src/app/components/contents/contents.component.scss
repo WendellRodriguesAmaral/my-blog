@@ -6,5 +6,10 @@
 
 div:nth-child(odd){
     background-color: transparent;
-    border: solid 1px black;
+   
+}
+
+.announcement{
+    position: sticky;
+    top:90px;
 }

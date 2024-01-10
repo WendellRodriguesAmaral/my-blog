@@ -1,0 +1,8 @@
+@import "../../../../assets/styles/colors.scss";
+@import "../../../../assets/styles/details.scss";
+
+.announcement {
+  @include b-radius-default;
+  @include b-shadow-default;
+  @include font-default;
+}
