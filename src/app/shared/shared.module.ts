@@ -5,10 +5,10 @@ import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
-    ModalComponent
+    ModalComponent,  
   ],
   exports: [
-    ModalComponent
+    ModalComponent,
   ],
   imports: [
     CommonModule

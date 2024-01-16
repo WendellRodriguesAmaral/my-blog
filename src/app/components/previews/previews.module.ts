@@ -6,6 +6,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { AnotherPostsComponent } from './another-posts/another-posts.component';
 import { AnnouncementComponent } from './announcement/announcement.component';
 
+
 @NgModule({
   declarations: [
     PreviewsComponent,

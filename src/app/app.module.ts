@@ -10,9 +10,11 @@ import { ContentsComponent } from './components/contents/contents.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { PostComponent } from './components/post/post.component';
 import { FormComponent } from './components/new-post/form/form.component';
+import {HttpClientModule } from '@angular/common/http';
 
 import { SharedModule } from './shared/shared.module';
 import { PreviewsModule } from './components/previews/previews.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -25,13 +27,15 @@ import { PreviewsModule } from './components/previews/previews.module';
     PostsComponent,
     PostComponent,
     FormComponent,
-
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SharedModule,
     PreviewsModule,
-    SharedModule
+    FontAwesomeModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

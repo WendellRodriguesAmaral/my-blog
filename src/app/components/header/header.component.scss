@@ -67,8 +67,15 @@
 }
 
 .profile{
-    background-color: $white;
-    border: solid 1px #000;
+    background-color: $grey; 
+    @include font-default;
+    color:$white;  
+    font-weight: 800;
+    font-size: 16px;
+    @include b-shadow-default;
+    @include b-radius-default;
+    //border: solid 1px black;
+
 }
 
 span{

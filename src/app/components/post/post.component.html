@@ -19,19 +19,18 @@
 
         <div class="post__photo col-12">
             <div class="post__photo__image bg-black ">
-                <img class="img-fluid " src="https://lavainana.com.br/wp-content/uploads/2018/07/Maranha%CC%83o-Barreirinhas-LagoaBonita-5.jpg" alt="">
+                <img class="img-fluid " [src]="post.image" alt="">
             </div>
         </div>
 
         <div class="post__text bg-white ps-4 pe-4 mt-2">
-            <h4 class="post__text__title bg-white mb-0">Titulo do post</h4>
+            <h4 class="post__text__title bg-white mb-0">{{post.title}}</h4>
             <small class="post__text__details bg-white">               
-                02/01/2023 - natureza - publico
+                {{post.date | slice:0:10}} - {{post.category}} - {{post.privacy}}
             </small>
 
             <p class="post__text__content bg-white mt-2" >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque sit est similique assumenda voluptate, eaque cupiditate, sequi quos, provident iste dolorem. Veniam totam saepe deleniti enim, laudantium et doloribus unde?
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque sit est similique assumenda voluptate, eaque cupiditate, sequi quos, provident iste dolorem. Veniam totam saepe deleniti enim, laudantium et doloribus unde?
+                {{post.text}}
             </p>
 
             <span class="bg-white">@autor</span>
