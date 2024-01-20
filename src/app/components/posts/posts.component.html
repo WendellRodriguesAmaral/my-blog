@@ -1,5 +1,13 @@
 <main class="posts col-12 mt-2">
+    <ng-template [ngIf]="loading">
+
+        <div class="loading">
+            <img class="loading__img" src="../../../assets/GIFS/loading-ampulheta.gif" alt="">
+            <p>Carregando publicações ...</p>
+        </div>
+    </ng-template>
+
     <div class="posts__container col-12">
-        <blog-post *ngFor="let post of posts" [post]=post></blog-post>        
+        <blog-post *ngFor="let post of posts" [post]=post></blog-post>
     </div>
 </main>

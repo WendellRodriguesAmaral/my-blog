@@ -8,9 +8,9 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <form class="search d-flex" role="search">
-        <input class="search__input form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="search__button btn " type="submit">Buscar</button>
+      <form class="search d-flex" role="search" (ngSubmit)="searchPosts(search)">
+        <input class="search__input form-control me-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
+        <button class="search__button btn" [disabled]="search.length <= 2" type="submit">Buscar</button>
       </form>
 
       <div class="profile ms-5 w-25 pt-2 pb-2 d-flex justify-content-center align-items-center flex-nowrap">

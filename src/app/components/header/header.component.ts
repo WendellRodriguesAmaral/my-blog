@@ -10,10 +10,16 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 })
 export class HeaderComponent implements OnInit {
   faArrowRight = faArrowRight;
+  search:string='';
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+
+  searchPosts(search:string){
+    console.log(search);
   }
 
 }
