@@ -15,7 +15,7 @@ import {HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { PreviewsModule } from './components/previews/previews.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -37,7 +37,8 @@ import { FormsModule } from '@angular/forms';
     PreviewsModule,
     FontAwesomeModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

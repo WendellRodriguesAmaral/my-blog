@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Categories } from 'src/app/shared/enums/categories.enum';
 
 @Component({
   selector: 'blog-categories',
@@ -7,12 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriesComponent implements OnInit {
 
-  //será um enum
-  categories:string[] = ["Familia", "Natureza", "Esportes","Design", "Lazer", "Tecnologia", "Ciência", "Vida", "Religioso", "Ciência", "Curiosidade", "Politica", "Trabalho", "Pessoas"];
+  categories = Categories;
 
   constructor() { }
 
   ngOnInit(): void {
+    
+  }
+
+  getCategories(){
+    return Object.values(this.categories); 
   }
 
 }

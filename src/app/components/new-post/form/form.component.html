@@ -1,43 +1,38 @@
 <div class="form col-12 h-100">
     <div class="form__content col-12 h-100">
-        <form class="col-12">
+        <form [formGroup]="postFormGrupo" class="col-12" (ngSubmit)="publishNewPost()">
             <fieldset>
-                <input class="title" placeholder="Titulo" type="text" 
+                <input formControlName="title" class="title" placeholder="Titulo*" type="text" 
                 name="title" id="title">
             </fieldset>
             <fieldset>
-                <input class="url-image" placeholder="Url da imagem" type="text" 
+                <input formControlName="image" class="url-image" placeholder="Url da imagem" type="text" 
                 name="url-image" id="url-image">
             </fieldset>
 
             <fieldset>
-                <textarea class="text" placeholder="O que quer compartilhar hoje?" 
+                <textarea formControlName="text" class="text" placeholder="O que quer compartilhar hoje?*" 
                 name="text" id="text" cols="30" rows="5"></textarea>
             </fieldset>
 
             <div class="d-flex flex-wrap mt-3">
                 
                 <section class="select-category col-12  col-sm-12 col-md-6">
-                    <select name="category" id="category">
-                        <option value="1">Category 1</option>
-                        <option value="2">Category 2</option>
+                    <select formControlName="category" name="category" id="category">
+                        <option  *ngFor="let category of getCategories()" [value]="category">{{category}}</option>                        
                     </select>
-                </section>
-                
+                </section>                
                 
                 <section class="radios-privacy col-12 col-sm-12 col-md-6 mt-2 mt-md-0">                   
-                    <input type="radio" checked name="privacy" id="public"> <label for="public">Publico</label>
-                    <input type="radio" name="privacy" id="private">  <label for="private">Privado</label>
+                    <input type="radio" formControlName="privacy" value="public" checked name="privacy" id="public"> <label for="public">Publico</label>
+                    <input type="radio" formControlName="privacy" value="privacy" name="privacy" id="private">  <label for="private">Privado</label>
                 </section>
             </div>
 
             <div class="actions mt-3 col-12 d-flex flex-wrap">
-                <button class="col-12 col-sm-12 col-md-8 mt-2">Publicar</button>
+                <button class="col-12 col-sm-12 col-md-8 mt-2" [disabled]="postFormGrupo.invalid" type="submit">Publicar</button>
                 <input class="col-12 col-sm-12 col-md-4 mt-2" type="reset" value="Limpar Tudo">
             </div>            
         </form>
     </div>
 </div>
-
-
-<!--title , image, text, category,  privacy-->

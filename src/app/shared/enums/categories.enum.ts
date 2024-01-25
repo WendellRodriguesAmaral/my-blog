@@ -1,0 +1,16 @@
+export enum Categories {
+    Familia = "Familia",
+    Natureza = "Natureza",
+    Esportes = "Esportes",
+    Design = "Design",
+    Lazer = "Lazer",
+    Tecnologia = "Tecnologia",
+    Vida= "Vida",
+    Religioso = "Religioso",
+    Ciência = "Ciências",
+    Curiosidade = "Curiosidade",
+    Politica ="Política",
+    Trabalho ="Trabalho",
+    Pessoas = "Pessoas",
+    Outros = "Outros",
+}
