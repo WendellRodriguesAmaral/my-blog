@@ -1,6 +1,6 @@
-<div class="form col-12 h-100">
+<div class="form col-12 h-100 position-relative">
     <div class="form__content col-12 h-100">
-        <form [formGroup]="postFormGrupo" class="col-12" (ngSubmit)="publishNewPost()">
+        <form [formGroup]="postFormGrupo" *ngIf="!loading" class="col-12" (ngSubmit)="publishNewPost()">
             <fieldset>
                 <input formControlName="title" class="title" placeholder="Titulo*" type="text" 
                 name="title" id="title">
@@ -8,15 +8,17 @@
                 message="O titulo do post é obrigatório."></blog-v-message>
                 <blog-v-message *ngIf="postFormGrupo.get('title')?.errors?.minlength" 
                 message="O titulo deve conter pelo menos 3 caracteres."></blog-v-message>
+                <blog-v-message *ngIf="postFormGrupo.get('title')?.errors?.maxlength"
+                message="O titulo deve conter no máximo 30 caracteres."></blog-v-message>
             </fieldset>
+
             <fieldset>
                 <input formControlName="image" class="url-image" placeholder="Url da imagem" type="text" 
                 name="url-image" id="url-image">
                 <blog-v-message *ngIf="postFormGrupo.get('image')?.errors?.pattern" 
                 message="O valor inserido deve ser uma url. Ex: https://...."></blog-v-message>
                 <blog-v-message *ngIf="postFormGrupo.get('image')?.errors?.maxlength" 
-                message="O link deve ter no máximo 255 caracteres."></blog-v-message>
-                
+                message="O link deve ter no máximo 255 caracteres."></blog-v-message>                
             </fieldset>
 
             <fieldset>
@@ -30,8 +32,7 @@
                 message="O texto do post deve no máximo 500 caracteres."></blog-v-message>
             </fieldset>
 
-            <div class="d-flex flex-wrap mt-3">
-                
+            <div class="d-flex flex-wrap mt-3">                
                 <section class="select-category col-12  col-sm-12 col-md-6">
                     <select formControlName="category" name="category" id="category">
                         <option  *ngFor="let category of getCategories()" [value]="category">{{category}}</option>                        
@@ -50,4 +51,11 @@
             </div>            
         </form>
     </div>
+
+    <ng-template [ngIf]="loading">
+        <div class="loading">
+            <img class="loading__img" src="../../../assets/GIFS/loading-ampulheta.gif" alt="">
+            <p>Publicando post ...</p>
+        </div>
+    </ng-template>
 </div>

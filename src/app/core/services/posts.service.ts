@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { NewPost } from 'src/app/shared/models/new-post.model';
 import { Post } from 'src/app/shared/models/post.model';
 import { environment } from 'src/environments/environment';
@@ -10,6 +10,8 @@ import { environment } from 'src/environments/environment';
 })
 export class PostsService {
   url = environment.url;
+  private postsSubject = new BehaviorSubject<Post[]>([]);
+
 
   constructor(private http: HttpClient) {}
 
@@ -26,6 +28,15 @@ export class PostsService {
     
     
     return this.http.post<Post[]>(this.url+'/posts',post);
+  }
+
+
+  refreshPosts(posts:Post[]){
+    this.postsSubject.next(posts);
+  }
+
+  getPostsUpdated(){//para quem chamar esse método poder fazer um subscribe
+    return this.postsSubject.asObservable();
   }
 
   

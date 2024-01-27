@@ -26,7 +26,7 @@
         <div class="post__text bg-white ps-4 pe-4 mt-2">
             <h4 class="post__text__title bg-white mb-0">{{post.title}}</h4>
             <small class="post__text__details bg-white">               
-                {{post.date | date: 'dd/MM/yyyy'}} - {{post.category}} - {{post.privacy}}
+                {{post.date | date: 'dd/MM/yyyy': 'UTC'}} - {{post.category}} - {{post.privacy}}
             </small>
 
             <p class="post__text__content bg-white mt-2" >

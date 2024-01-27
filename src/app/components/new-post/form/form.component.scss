@@ -1,113 +1,145 @@
-@import '../../../../assets/styles/colors.scss';
-@import '../../../../assets/styles/details.scss';
+@import "../../../../assets/styles/colors.scss";
+@import "../../../../assets/styles/details.scss";
 
 @mixin inputTextArea {
-    padding: 5px;
-    padding-bottom: 0;
-    font-size: 18px;
-    width: 100%;
+  padding: 5px;
+  padding-bottom: 0;
+  font-size: 18px;
+  width: 100%;
 }
 
-.form{
-    form{
-        padding:  0 2%;
-        fieldset{
-            width: 100%;
-            margin: auto;
-            margin-top: 10px;
+.form {
+  form {
+    padding: 0 2%;
+    fieldset {
+      width: 100%;
+      margin: auto;
+      margin-top: 10px;
 
-            input{
-               @include inputTextArea;
-                &.title, &.url-image{
-                    border: none;
-                    border-bottom: solid 1px $grey-light;
-                    outline: none;
+      input {
+        @include inputTextArea;
+        &.title,
+        &.url-image {
+          border: none;
+          border-bottom: solid 1px $grey-light;
+          outline: none;
 
-                    &:focus{
-                        border-bottom:solid 2px $grey;
-                        
-                        &::placeholder{
-                            opacity: 0;
-                        }
-                    }
-                }
+          &:focus {
+            border-bottom: solid 2px $grey;
+
+            &::placeholder {
+              opacity: 0;
             }
-
-
-            textarea {
-               @include inputTextArea;
-                
-                &.text{
-                    border: none;
-                    border-bottom: solid 1px $grey-light;
-                    outline: none;
-
-                    &:focus{
-                        border-bottom:solid 2px $grey;
-                        
-                        &::placeholder{
-                            opacity: 0;
-                        }
-                    }
-                }
-            }
-
+          }
         }
+      }
 
+      textarea {
+        @include inputTextArea;
 
-        div{         
+        &.text {
+          border: none;
+          border-bottom: solid 1px $grey-light;
+          outline: none;
 
-            section{
-                align-self: self-end;
+          &:focus {
+            border-bottom: solid 2px $grey;
 
-                &.radios-privacy{
-                    display: flex;
-                    font-size: 16px;               
-                    input{
-                        margin:0 8px;
-                    }
-                }
-
-                &.select-category{
-                    select{
-                        @include b-radius-default;
-                        background-color: $white;
-                        border-color: $grey-light;
-                        padding: 5px;
-                        font-size: 14px;
-                        width: 90%;                    
-                    }
-                }
-            }           
+            &::placeholder {
+              opacity: 0;
+            }
+          }
         }
-
-        .actions{
-            button, input{
-                font-size: 16px;
-                padding: 8px;
-            }
-
-            button{
-                @include b-radius-default;
-                background-color: $blue-powered;
-                color: $white;
-                border: none;
-                cursor: pointer;
-
-                &:disabled{
-                    opacity: .5;
-                    pointer-events: none;
-                }
-            }
-
-            input{
-                @include b-radius-default;
-                background-color: $white;
-                border: none;
-                color:$red;
-                cursor: pointer;
-
-            }
-        }
+      }
     }
+
+    div {
+      section {
+        align-self: self-end;
+
+        &.radios-privacy {
+          display: flex;
+          font-size: 16px;
+          input {
+            margin: 0 8px;
+          }
+        }
+
+        &.select-category {
+          select {
+            @include b-radius-default;
+            background-color: $white;
+            border-color: $grey-light;
+            padding: 5px;
+            font-size: 14px;
+            width: 90%;
+          }
+        }
+      }
+    }
+
+    .actions {
+      button,
+      input {
+        font-size: 16px;
+        padding: 8px;
+      }
+
+      button {
+        @include b-radius-default;
+        background-color: $blue-powered;
+        color: $white;
+        border: none;
+        cursor: pointer;
+
+        &:disabled {
+          opacity: 0.5;
+          pointer-events: none;
+        }
+      }
+
+      input {
+        @include b-radius-default;
+        background-color: $white;
+        border: none;
+        color: $red;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.loading {
+  padding: 50px 40px 20px 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  animation-name: fade;
+  animation-duration: 0.7s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
+  animation-direction: alternate-reverse;
+  animation-delay: 0.2s;
+
+  opacity: 0.6;
+
+  & > img {
+    transform: scale(1.5);
+  }
+
+  & > p {
+    margin-top: 20px;
+    font-size: 20px;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.1;
+  }
+  to {
+    opacity: 0.7;
+  }
 }
