@@ -1,20 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { PostsService } from 'src/app/core/services/posts.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Categories } from 'src/app/shared/enums/categories.enum';
+import { Post } from 'src/app/shared/models/post.model';
+import { NewPost } from 'src/app/shared/models/new-post.model';
 
 @Component({
   selector: 'blog-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements OnInit {
+export class FormComponent implements OnInit{
   categories = Categories;
   postFormGrupo!: FormGroup
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private service:PostsService) { }
 
   ngOnInit(): void {
-
+    
     this.postFormGrupo = this.formBuilder.group({
       title:
         ['',
@@ -24,7 +27,7 @@ export class FormComponent implements OnInit {
             Validators.minLength(3)
           ]
         ],
-      image: [''],
+      image: ['' , [Validators.pattern('^(https?://(?:[^.]+\.){2,}).*'), Validators.maxLength(255)]],
       text:
         ['',
           [
@@ -36,6 +39,8 @@ export class FormComponent implements OnInit {
       category: [Categories.Outros],
       privacy: ['public']
     })
+
+    
   }
 
   getCategories() {
@@ -44,6 +49,16 @@ export class FormComponent implements OnInit {
 
   publishNewPost() {
     console.log(this.postFormGrupo.getRawValue())
+
+    const newPost = this.postFormGrupo.getRawValue() as NewPost
+    
+    this.service.createPost(newPost)
+    .subscribe((res:Post[]) => {
+      console.log("RETORNO",res)
+      this.postFormGrupo.get("title")?.setValue('');
+      this.postFormGrupo.get("image")?.setValue('');
+      this.postFormGrupo.get("text")?.setValue('');
+    })
   }
 
 }

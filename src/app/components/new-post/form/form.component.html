@@ -4,15 +4,30 @@
             <fieldset>
                 <input formControlName="title" class="title" placeholder="Titulo*" type="text" 
                 name="title" id="title">
+                <blog-v-message *ngIf="postFormGrupo.get('title')?.errors?.required && postFormGrupo.get('title')?.touched" 
+                message="O titulo do post é obrigatório."></blog-v-message>
+                <blog-v-message *ngIf="postFormGrupo.get('title')?.errors?.minlength" 
+                message="O titulo deve conter pelo menos 3 caracteres."></blog-v-message>
             </fieldset>
             <fieldset>
                 <input formControlName="image" class="url-image" placeholder="Url da imagem" type="text" 
                 name="url-image" id="url-image">
+                <blog-v-message *ngIf="postFormGrupo.get('image')?.errors?.pattern" 
+                message="O valor inserido deve ser uma url. Ex: https://...."></blog-v-message>
+                <blog-v-message *ngIf="postFormGrupo.get('image')?.errors?.maxlength" 
+                message="O link deve ter no máximo 255 caracteres."></blog-v-message>
+                
             </fieldset>
 
             <fieldset>
                 <textarea formControlName="text" class="text" placeholder="O que quer compartilhar hoje?*" 
                 name="text" id="text" cols="30" rows="5"></textarea>
+                <blog-v-message *ngIf="postFormGrupo.get('text')?.errors?.required && postFormGrupo.get('text')?.touched" 
+                message="O texto do post é obrigatório."></blog-v-message>
+                <blog-v-message *ngIf="postFormGrupo.get('text')?.errors?.minlength" 
+                message="O texto do post deve conter pelo menos 3 caracteres."></blog-v-message>
+                <blog-v-message *ngIf="postFormGrupo.get('text')?.errors?.maxlength" 
+                message="O texto do post deve no máximo 500 caracteres."></blog-v-message>
             </fieldset>
 
             <div class="d-flex flex-wrap mt-3">

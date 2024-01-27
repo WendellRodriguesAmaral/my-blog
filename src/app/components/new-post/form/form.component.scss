@@ -9,17 +9,12 @@
 }
 
 .form{
-    &__content{
-        //border:solid 1px black;
-    }
-
     form{
         padding:  0 2%;
         fieldset{
             width: 100%;
             margin: auto;
             margin-top: 10px;
-            //border:solid 1px black;
 
             input{
                @include inputTextArea;
@@ -98,6 +93,11 @@
                 color: $white;
                 border: none;
                 cursor: pointer;
+
+                &:disabled{
+                    opacity: .5;
+                    pointer-events: none;
+                }
             }
 
             input{

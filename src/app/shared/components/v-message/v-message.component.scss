@@ -1,0 +1,8 @@
+@import '../../../../assets/styles/colors.scss';
+@import '../../../../assets/styles/details.scss';
+
+.message{
+    color:$red;
+    @include font-default;
+    font-size: 15px;
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from 'src/app/core/services/posts.service';
-import { tap, map } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { Post } from 'src/app/shared/models/post.model';
 
 @Component({

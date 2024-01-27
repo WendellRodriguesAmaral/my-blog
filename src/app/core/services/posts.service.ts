@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { NewPost } from 'src/app/shared/models/new-post.model';
 import { Post } from 'src/app/shared/models/post.model';
 import { environment } from 'src/environments/environment';
 
@@ -12,26 +13,20 @@ export class PostsService {
 
   constructor(private http: HttpClient) {}
 
-  getPosts():Observable<Post[]>{
-    console.log("Buscando na url: ", this.url);
-
+  getPosts():Observable<Post[]>{ 
     return this.http.get<Post[]>(this.url+'/posts');
   }
 
-  // createPost(){
-  //   const body = {
-  //     title: 'foo',
-  //     image:"teste",
-  //     text:"teste",
-  //     author:"Wendell",
-  //     date: new Date(),
-  //     category:"teste",
-  //     privacy:"teste",
-  //   }
-  //   console.log("tentando criar post");
+  createPost(post:NewPost):Observable<Post[]>{
+    console.log("tentando criar post");
+
+    post.date = new Date();
+    post.author= "teste";
+    console.log("Tentando enviar este post:", post);
     
-  //   return this.http.post(this.url, body);
-  // }
+    
+    return this.http.post<Post[]>(this.url+'/posts',post);
+  }
 
   
 }

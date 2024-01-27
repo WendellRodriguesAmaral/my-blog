@@ -3,7 +3,7 @@ export interface NewPost {
     image?: string;
     text: string;
     author: string;
-    date: string;
+    date: Date;
     category: string;
     privacy: string;
   }
