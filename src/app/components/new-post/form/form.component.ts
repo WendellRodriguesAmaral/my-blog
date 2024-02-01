@@ -1,10 +1,9 @@
 import { PostsService } from 'src/app/core/services/posts.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Categories } from 'src/app/shared/enums/categories.enum';
 import { Post } from 'src/app/shared/models/post.model';
 import { NewPost } from 'src/app/shared/models/new-post.model';
-import { BehaviorSubject } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
 
 @Component({
@@ -17,6 +16,7 @@ export class FormComponent implements OnInit {
   postFormGrupo!: FormGroup
   loading: boolean = false;
 
+  @Output() publisherPost = new EventEmitter();
 
   constructor(private formBuilder: FormBuilder, private service: PostsService) { }
 
@@ -46,7 +46,7 @@ export class FormComponent implements OnInit {
           ]
         ],
       category: [Categories.Outros],
-      privacy: ['public']
+      privacy: ['publico']
     })
 
 
@@ -63,11 +63,26 @@ export class FormComponent implements OnInit {
     const newPost = this.postFormGrupo.getRawValue() as NewPost
 
     this.service.createPost(newPost)
-    .pipe(finalize(() => {this.loading = false}))
+    .pipe(finalize(() => this.loading = false))
       .subscribe((res: Post[]) => {
-        console.log("RETORNO", res) //ANALISAR COMO FAZER O MODAL SUMIR AO POSTAR ALGO NOVO
+        console.log("RETORNO", res)
+        this.publisher(); 
         this.service.refreshPosts(res)
-      })
+      },
+        (err) => {
+          console.error(err) //ANALISAR O QUE FAZER AQUI
+        }
+      )
+  }
+
+
+  publisher(){
+    this.postFormGrupo.get("title")?.reset();
+    this.postFormGrupo.get("image")?.reset();
+    this.postFormGrupo.get("text")?.reset();
+    this.postFormGrupo.get("category")?.setValue(Categories.Outros);
+    this.postFormGrupo.get("privacy")?.setValue('public');
+    this.publisherPost.emit();
   }
 
 }

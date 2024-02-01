@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-post.component.scss']
 })
 export class NewPostComponent implements OnInit {
+  exitModal: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  publish(event:any){
+    console.log(event);
+    this.exitModal = true;
   }
 
 }

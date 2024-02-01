@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { PostsService } from 'src/app/core/services/posts.service';
 import { tap } from 'rxjs/operators';
 import { Post } from 'src/app/shared/models/post.model';
@@ -13,6 +13,7 @@ export class PostsComponent implements OnInit {
   posts: Post[] = [];
   loading: boolean = true;
   posts$!: Observable<Post[]>;
+  @Output() postEmitter: EventEmitter<Post[]> = new EventEmitter();
 
   constructor(private service: PostsService) { }
 
@@ -30,6 +31,7 @@ export class PostsComponent implements OnInit {
       tap(() => this.loading = false)
     ).subscribe((posts: Post[]) => {
         this.posts = posts;
+        this.postEmitter.emit(posts);
       })
   }
 

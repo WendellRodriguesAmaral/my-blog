@@ -9,6 +9,15 @@
   &>b {
     color: $blue-soft;
   }
+
+  p.loading{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+
+    padding: 10px 0;
+    opacity: .7;
+  }
 }
 
 span{
