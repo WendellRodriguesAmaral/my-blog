@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { NewPost } from 'src/app/shared/models/new-post.model';
 import { Post } from 'src/app/shared/models/post.model';
 import { environment } from 'src/environments/environment';
@@ -11,6 +11,8 @@ import { environment } from 'src/environments/environment';
 export class PostsService {
   url = environment.url;
   private postsSubject = new BehaviorSubject<Post[]>([]);
+  searching:Subject<any> = new Subject();
+
 
 
   constructor(private http: HttpClient) {}
@@ -24,19 +26,30 @@ export class PostsService {
 
     post.date = new Date();
     post.author= "teste";
-    console.log("Tentando enviar este post:", post);
-    
+    console.log("Tentando enviar este post:", post);    
     
     return this.http.post<Post[]>(this.url+'/posts',post);
   }
 
+  getPostsBySearch(search:string):Observable<Post[]>{
+    const params = new HttpParams().set('search',search);
+    return this.http.get<Post[]>(this.url+'/posts',{params});  
+  }
+
+  getPostsUpdated(){//para quem chamar esse método poder fazer um subscribe
+    return this.postsSubject.asObservable();
+  }
 
   refreshPosts(posts:Post[]){
     this.postsSubject.next(posts);
   }
 
-  getPostsUpdated(){//para quem chamar esse método poder fazer um subscribe
-    return this.postsSubject.asObservable();
+  searchingEvent(){//para quem chamar esse método poder fazer um subscribe
+    return this.searching.asObservable();
+  }
+
+  searchingEmit(searching:any){
+    this.searching.next(searching);   
   }
 
   

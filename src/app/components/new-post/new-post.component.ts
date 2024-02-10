@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-post.component.scss']
 })
 export class NewPostComponent implements OnInit {
-  exitModal: boolean = false;
+  exitModal!: number;
 
   constructor() { }
 
@@ -14,8 +14,8 @@ export class NewPostComponent implements OnInit {
   }
 
   publish(event:any){
-    console.log(event);
-    this.exitModal = true;
+    console.log("evento:",event);
+    this.exitModal = event;
   }
 
 }

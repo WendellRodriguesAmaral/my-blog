@@ -66,8 +66,8 @@ export class FormComponent implements OnInit {
     .pipe(finalize(() => this.loading = false))
       .subscribe((res: Post[]) => {
         console.log("RETORNO", res)
-        this.publisher(); 
         this.service.refreshPosts(res)
+        this.publisher(res.length); 
       },
         (err) => {
           console.error(err) //ANALISAR O QUE FAZER AQUI
@@ -76,13 +76,13 @@ export class FormComponent implements OnInit {
   }
 
 
-  publisher(){
+  publisher(res:number){
     this.postFormGrupo.get("title")?.reset();
     this.postFormGrupo.get("image")?.reset();
     this.postFormGrupo.get("text")?.reset();
     this.postFormGrupo.get("category")?.setValue(Categories.Outros);
     this.postFormGrupo.get("privacy")?.setValue('public');
-    this.publisherPost.emit();
+    this.publisherPost.emit(res);
   }
 
 }

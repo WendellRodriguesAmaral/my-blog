@@ -21,9 +21,7 @@ export class AnotherPostsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(!changes.posts.firstChange){
-      console.log(changes.posts);
-      console.log(this.posts);
+    if(!changes.posts.firstChange){      
       this.posts = this.posts.slice(1, 6 || this.posts.length);     
     }
   }

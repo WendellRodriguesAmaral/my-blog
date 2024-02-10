@@ -19,8 +19,10 @@ export class PostsComponent implements OnInit {
 
   ngOnInit(): void {
     this.posts$ = this.service.getPostsUpdated();
-    this.posts$.subscribe(() => {
-      this.getPosts()
+    this.posts$.subscribe((posts) => {
+     this.posts = posts.reverse();
+      
+     
     });
 
     this.getPosts();

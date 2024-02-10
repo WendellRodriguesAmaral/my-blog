@@ -1,3 +1,4 @@
+import { Element } from '@angular/compiler/src/render3/r3_ast';
 import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 
 @Component({
@@ -8,7 +9,7 @@ import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChi
 export class ModalComponent implements OnInit, OnChanges {
 
   @Input() postTitle: string = ''
-  @Input() exitModal:boolean = false;
+  @Input() exitModal!:number;
   @ViewChild('exitModalButton') exitModalButton! : ElementRef ;
 
   constructor() { }
@@ -17,9 +18,11 @@ export class ModalComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes.exitModal) {     
+    if(changes.exitModal) {       
       this.exitModalButton?.nativeElement.click();
+
     }
+   
   }
 
 
