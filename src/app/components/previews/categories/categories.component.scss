@@ -11,7 +11,22 @@
   }
 
   ul{
-    opacity: .6;
-    font-size: 95%;
+    opacity: .7;  
+    list-style: none;
+  }
+
+  li{
+    &:hover{
+      cursor: pointer;
+    // text-decoration: underline;
+    opacity: 1;
+    font-weight: bold;
+    transform: scale(1.03);
+    }
+
+    &:visited a{
+      font-weight: bold;
+    }
+    
   }
 }

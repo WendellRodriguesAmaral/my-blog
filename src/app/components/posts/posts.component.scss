@@ -4,6 +4,22 @@
 .posts {
   display: flex;
   justify-content: center;
+
+  &__not-found {
+    img {
+      opacity: 0.2;
+      display: block;
+      margin: 0 auto;
+      width: 15rem;
+      margin-bottom: 20px;
+    }
+
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 30px;
+    opacity: 0.5;
+  }
+
   .loading {
     position: absolute;
     margin-top: 200px;
@@ -11,15 +27,15 @@
     display: flex;
     flex-direction: column;
 
-    &__img{
-        transform: scale(2);
-        margin-bottom: 40px;
-        align-self: center;
+    &__img {
+      transform: scale(2);
+      margin-bottom: 40px;
+      align-self: center;
     }
 
-    p{
-        font-size:18px;
-        opacity: 1;
+    p {
+      font-size: 18px;
+      opacity: 1;
     }
   }
 

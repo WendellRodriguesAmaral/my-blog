@@ -10,7 +10,7 @@ import { Post } from 'src/app/shared/models/post.model';
 })
 export class AnotherPostsComponent implements OnInit, OnChanges {
   @Input()
-  posts!: Post[];
+  Anotherposts!: Post[];
 
 
   constructor(private service: PostsService) { }
@@ -21,8 +21,8 @@ export class AnotherPostsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(!changes.posts.firstChange){      
-      this.posts = this.posts.slice(1, 6 || this.posts.length);     
+    if(!changes.Anotherposts.firstChange){      
+      this.Anotherposts = this.Anotherposts.slice(1, 6 || this.Anotherposts.length);     
     }
   }
 

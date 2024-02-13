@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PostsService } from 'src/app/core/services/posts.service';
+import { Categories } from 'src/app/shared/enums/categories.enum';
 import { Post } from 'src/app/shared/models/post.model';
 
 @Component({
@@ -9,10 +10,13 @@ import { Post } from 'src/app/shared/models/post.model';
   styleUrls: ['./contents.component.scss']
 })
 export class ContentsComponent implements OnInit {
-  posts!: Array<Post>;
+  Anotherposts!: Array<Post>;
   searching: boolean = false;
+  search!:string; 
   searching$!: Observable<any>;
-  search!:string;
+  filterByCategory$!: Observable<any>;
+  filterByCategory:boolean = false;
+  category!:Categories;
 
   constructor(private service:PostsService) { }
 
@@ -22,11 +26,23 @@ export class ContentsComponent implements OnInit {
       this.searching = searching.searching;
       this.search = searching.search;
     });
+
+    this.filterByCategory$ = this.service.filterByCategoryEvent();
+    this.filterByCategory$.subscribe((filter) => {
+      this.filterByCategory = filter.filterByCategory;
+      this.category = filter.category;
+    });
+
   }
 
-  receivePosts(posts: Post[]): void {
-    this.posts = posts;
+  receivePosts(Anotherposts: Post[]): void {
+    this.Anotherposts = Anotherposts;
+    console.log("receive posts chamado");
+    
+  }  
+
+  undoFilter(getAllPosts: boolean): void {
+    this.service.undoFilter(getAllPosts);
   }
-  
 
 }

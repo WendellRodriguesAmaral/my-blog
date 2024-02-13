@@ -9,7 +9,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <form class="search d-flex" role="search" (ngSubmit)="searchPosts(search)">
-        <input class="search__input form-control me-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
+        <input class="search__input form-control me-2" maxlength="15" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
         <button class="search__button btn" [disabled]="search.length <= 2" type="submit">Buscar</button>
       </form>
 

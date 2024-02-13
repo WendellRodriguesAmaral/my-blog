@@ -1,21 +1,26 @@
 
 <div class="contents container d-flex pt-5 pb-5">
     <div class="contents__left col-xxl-2 col-xl-2 col-lg-3 d-none d-lg-block d-xl-block d-xxl-block pb-3">
-        <!--previa do meu perfil,qtd posts publicados, categorias, favoritos etc...-->
         <blog-previews *ngIf="!searching" ></blog-previews>
     </div>
 
     <div class="contents__center col-xxl-7 col-xl-7 col-lg-9 col-12 ps-0 p-0 ps-lg-3 pe-lg-3 ">
-        <blog-new-post *ngIf="!searching"></blog-new-post>
-        <a *ngIf="searching">Desfazer</a> <!--IMPLEMENTAR O "DESFAZER" PARA TIRAR O FILTRO-->
-        <p *ngIf="searching" class=" search mb-0">Filtrando por: {{search}} </p>
+        <blog-new-post *ngIf="!searching && !filterByCategory"></blog-new-post>
+        <p *ngIf="searching" class=" search mb-0">Filtrando por: <i>{{search.trim()}}</i></p>
+        <a *ngIf="searching" (click)="undoFilter(true)"> Desfazer</a> 
+
+        <p *ngIf="filterByCategory" class=" search mb-0">Mostrando publicações da categoria: <i>{{category.trim()}}</i></p>
+        <a *ngIf="filterByCategory" (click)="undoFilter(true)"> Desfazer</a> 
+
+
         <blog-posts (postEmitter)="receivePosts($event)"></blog-posts>
+    
     </div>
 
     <div class="contents__right col-xxl-3 col-xl-3 d-none d-xl-block d-xxl-block pb-3">
-        <blog-another-posts  [posts]="posts"></blog-another-posts>
+        <blog-another-posts  [Anotherposts]="Anotherposts"></blog-another-posts>
 
-        <div class="announcement" blogPointer *ngIf="!searching">
+        <div class="announcement" blogPointer *ngIf="!searching && !filterByCategory">
             <blog-announcement></blog-announcement>
         </div>
     </div>

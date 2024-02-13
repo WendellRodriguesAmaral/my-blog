@@ -3,7 +3,7 @@
 
     <div class="col-12 ">
         <ul>
-            <li *ngFor="let category of getCategories()" >
+            <li (click)="filterByCategory(category)" *ngFor="let category of getCategories()" >
                 <a >{{category}}</a>
             </li>           
         </ul>

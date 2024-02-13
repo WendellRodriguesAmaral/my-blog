@@ -1,9 +1,9 @@
 <div class="another-posts col-12 bg-white pt-2 pb-1">
     <b class="d-flex justify-content-center mb-3 fs-6">Outras publicações</b>
 
-    <div class="col-12 " *ngIf="posts; else loading">
+    <div class="col-12 " *ngIf="Anotherposts; else loading">
         <ul>
-            <li *ngFor="let post of posts;">
+            <li *ngFor="let post of Anotherposts;">
                 <a>
                     <b>{{post.title | slice: 0:30 }}{{post.title.length > 30 ? '...' : ''}}</b>
                 </a>
