@@ -27,5 +27,9 @@ span{
 
 li{
     margin-top: 10px;
+    &:hover{
+        cursor: pointer;
+        text-decoration: underline;
+    }
 
 }

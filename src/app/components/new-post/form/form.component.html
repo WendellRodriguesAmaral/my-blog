@@ -2,7 +2,7 @@
     <div class="form__content col-12 h-100">
         <form [formGroup]="postFormGrupo" *ngIf="!loading" class="col-12" (ngSubmit)="publishNewPost()">
             <fieldset>
-                <input formControlName="title" class="title" placeholder="Titulo*" type="text" 
+                <input formControlName="title" class="title" placeholder="Titulo*" type="text"           
                 name="title" id="title">
                 <blog-v-message *ngIf="postFormGrupo.get('title')?.errors?.required && postFormGrupo.get('title')?.touched" 
                 message="O titulo do post é obrigatório."></blog-v-message>
@@ -32,14 +32,16 @@
                 message="O texto do post deve no máximo 500 caracteres."></blog-v-message>
             </fieldset>
 
-            <div class="d-flex flex-wrap mt-3">                
+            <div class="d-flex flex-wrap mt-3">  
                 <section class="select-category col-12  col-sm-12 col-md-6">
+                    <span>Categoria</span>           
                     <select formControlName="category" name="category" id="category">
                         <option  *ngFor="let category of getCategories()" [value]="category">{{category}}</option>                        
                     </select>
                 </section>                
                 
-                <section class="radios-privacy col-12 col-sm-12 col-md-6 mt-2 mt-md-0">                   
+                <section class="radios-privacy col-12 col-sm-12 col-md-6 mt-2 mt-md-0">                       
+
                     <input type="radio" formControlName="privacy" value="publico" checked name="privacy" id="public"> <label for="public">Publico</label>
                     <input type="radio" formControlName="privacy" value="privado" name="privacy" id="private">  <label for="private">Privado</label>
                 </section>

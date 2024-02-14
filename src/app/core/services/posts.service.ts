@@ -14,6 +14,7 @@ export class PostsService {
   private postsSubject = new BehaviorSubject<Post[]>([]);
   searching:Subject<any> = new Subject();
   category:Subject<any> = new Subject();
+  selectedAnotherPost:Subject<any> = new Subject();
   noFilter:Subject<any> = new Subject();
 
   constructor(private http: HttpClient) {}
@@ -40,6 +41,17 @@ export class PostsService {
   getPostsByCategory(category:Categories){    
     return this.http.get<Post[]>(this.url+'/posts/category/'+category);
   }
+
+
+
+  getselectedAnotherPostEvent(){
+    return this.selectedAnotherPost.asObservable();
+  }
+
+  selectedAnotherPostEmit(selectedAnotherPost:boolean){
+    this.selectedAnotherPost.next(selectedAnotherPost);
+  }
+
 
   getPostsUpdated(){//para quem chamar esse método poder fazer um subscribe
     return this.postsSubject.asObservable();
@@ -72,6 +84,7 @@ export class PostsService {
     
     this.searchingEmit({searching:false,search:""});
     this.filterByCategoryEmit({filterByCategory:false,category:''});
+    this.selectedAnotherPostEmit(false);
   }
 
   noFilterEvent(){

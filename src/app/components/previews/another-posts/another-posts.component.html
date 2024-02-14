@@ -3,7 +3,7 @@
 
     <div class="col-12 " *ngIf="Anotherposts; else loading">
         <ul>
-            <li *ngFor="let post of Anotherposts;">
+            <li *ngFor="let post of Anotherposts;" (click)="showPost(post)">
                 <a>
                     <b>{{post.title | slice: 0:30 }}{{post.title.length > 30 ? '...' : ''}}</b>
                 </a>

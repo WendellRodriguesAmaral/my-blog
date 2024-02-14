@@ -8,6 +8,7 @@
   width: 100%;
 }
 
+
 .form {
   form {
     padding: 0 2%;
@@ -73,6 +74,13 @@
             padding: 5px;
             font-size: 14px;
             width: 90%;
+          }
+
+          span{          
+            font-size: 18px;
+            display: block;
+            margin-bottom: 5px;
+            opacity: .8;
           }
         }
       }

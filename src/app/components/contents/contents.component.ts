@@ -17,6 +17,8 @@ export class ContentsComponent implements OnInit {
   filterByCategory$!: Observable<any>;
   filterByCategory:boolean = false;
   category!:Categories;
+  selectedAnotherPost$!: Observable<any>;
+  selectedAnotherPost:boolean = false;
 
   constructor(private service:PostsService) { }
 
@@ -32,6 +34,12 @@ export class ContentsComponent implements OnInit {
       this.filterByCategory = filter.filterByCategory;
       this.category = filter.category;
     });
+
+    this.selectedAnotherPost$ = this.service.getselectedAnotherPostEvent();
+    this.selectedAnotherPost$.subscribe((selectedAnotherPost) => {
+      this.selectedAnotherPost = selectedAnotherPost;
+    });
+
 
   }
 

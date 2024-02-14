@@ -49,6 +49,8 @@ export class FormComponent implements OnInit {
       privacy: ['publico']
     })
 
+    
+
 
   }
 
@@ -81,7 +83,7 @@ export class FormComponent implements OnInit {
     this.postFormGrupo.get("image")?.reset();
     this.postFormGrupo.get("text")?.reset();
     this.postFormGrupo.get("category")?.setValue(Categories.Outros);
-    this.postFormGrupo.get("privacy")?.setValue('public');
+    this.postFormGrupo.get("privacy")?.setValue('publico');
     this.publisherPost.emit(res);
   }
 
