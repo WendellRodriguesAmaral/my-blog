@@ -1,8 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { PostsService } from 'src/app/core/services/posts.service';
-import { tap } from 'rxjs/operators';
+import { debounceTime, finalize, tap } from 'rxjs/operators';
 import { Post } from 'src/app/shared/models/post.model';
 import { Observable } from 'rxjs';
+
+const TEN_SECONDS = 10000;
 
 @Component({
   selector: 'blog-posts',
@@ -14,8 +16,9 @@ export class PostsComponent implements OnInit {
   loading: boolean = true;
   posts$!: Observable<Post[]>;
   noFilter!: Observable<any>;
-
-  postSearched: boolean = false;  
+  postSearched: boolean = false;
+  moreTenSeconds: boolean = false;
+  getPostsError: boolean = false;
   @Output() postEmitter: EventEmitter<Post[]> = new EventEmitter();
 
   constructor(private service: PostsService) { }
@@ -24,8 +27,8 @@ export class PostsComponent implements OnInit {
     this.posts$ = this.service.getPostsUpdated();
     this.posts$.subscribe((posts) => {
       console.log(posts);
-      
-     this.posts = posts.reverse();      
+
+      this.posts = posts.reverse();
     });
 
     this.noFilter = this.service.noFilterEvent();
@@ -34,17 +37,28 @@ export class PostsComponent implements OnInit {
     });
 
     this.getPosts();
+    this.checksPostMoreTenSeconds();
   }
 
-  getPosts() {
+  private getPosts() {
     this.service.getPosts().pipe(
-      tap(() => this.loading = false)
+      finalize(() => this.loading = false)
     ).subscribe((posts: Post[]) => {
-        this.posts = posts;
-        this.postSearched=true;
-        this.postEmitter.emit(posts);
+      this.posts = posts;
+      this.postSearched = true;
+      this.postEmitter.emit(posts);
+    },
+      (error) => {
+        this.getPostsError = true;         // TODO - emitir evento para remover itens da tela
       })
   }
+
+   private checksPostMoreTenSeconds() {
+    setTimeout(() => {
+      this.moreTenSeconds = true;
+    }, TEN_SECONDS)
+  }
+
 
 
 }
