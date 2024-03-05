@@ -8,7 +8,9 @@
         <div class="new-post__content col-10 ">
             <section   class="col-12 h-100 pt-3">                
                 <blog-modal [exitModal]="exitModal" postTitle="Novo Post"> 
-                    <button class="col-11 h-75">Criar um post</button>
+                    <button [disabled]="isPostsError" class="col-11 h-75">
+                        {{isPostsError ? ":(" : "Criar um post" }}
+                    </button>
                     <blog-form  (publisherPost)="publish($event)" content></blog-form>                   
                 </blog-modal>
             </section>

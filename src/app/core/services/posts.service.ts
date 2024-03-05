@@ -54,7 +54,7 @@ export class PostsService {
   }
 
 
-  getPostsUpdated(){//para quem chamar esse método poder fazer um subscribe
+  getPostsUpdated(){
     return this.postsSubject.asObservable();
   }
 
@@ -62,7 +62,7 @@ export class PostsService {
     this.postsSubject.next(posts);
   }
 
-  searchingEvent(){//para quem chamar esse método poder fazer um subscribe
+  searchingEvent(){
     return this.searching.asObservable();
   }
 
@@ -70,17 +70,17 @@ export class PostsService {
     this.searching.next(searching);   
   }
   
-  filterByCategoryEvent(){//para quem chamar esse método poder fazer um subscribe
+  filterByCategoryEvent(){
     return this.category.asObservable();
   }
 
-  filterByCategoryEmit(category:any){
+  filterByCategoryEmit(category:Object){
     this.category.next(category);   
   }
 
   undoFilter(getAllPosts:boolean){
     if(getAllPosts){
-      this.noFilter.next();   //como eu tento limpar os filtros antes de fazer um novo filtro, esse if evita que nao faça outra chamada no back
+      this.noFilter.next();//como eu tento limpar os filtros antes de fazer um novo filtro, esse if evita que nao faça outra chamada no back
     }
     
     this.searchingEmit({searching:false,search:""});
@@ -90,7 +90,5 @@ export class PostsService {
 
   noFilterEvent(){
     return this.noFilter.asObservable();
-  }
-
-   
+  }   
 }

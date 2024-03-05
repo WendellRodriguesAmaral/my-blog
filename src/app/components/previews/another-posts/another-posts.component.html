@@ -14,8 +14,12 @@
     </div>
 
     <ng-template #loading>
-        <p class="loading m-auto">
+        <p *ngIf="!isPostsError" class="loading m-auto">
             Carregando ...
+        </p>
+
+        <p *ngIf="isPostsError" class="loading m-auto">
+            Erro ao carregar posts
         </p>
     </ng-template>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'blog-new-post',
@@ -8,13 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class NewPostComponent implements OnInit {
   exitModal!: number;
 
+  @Input()
+  isPostsError!: boolean;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   publish(event:any){
-    console.log("evento:",event);
     this.exitModal = event;
   }
 

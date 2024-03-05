@@ -1,5 +1,4 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Observable } from 'rxjs';
 import { PostsService } from 'src/app/core/services/posts.service';
 import { Post } from 'src/app/shared/models/post.model';
 
@@ -11,6 +10,10 @@ import { Post } from 'src/app/shared/models/post.model';
 export class AnotherPostsComponent implements OnInit, OnChanges {
   @Input()
   Anotherposts!: Post[];
+
+  @Input()
+  isPostsError!: boolean;
+
   private maxAnotherPosts: number = 5;
 
 

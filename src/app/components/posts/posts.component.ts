@@ -20,6 +20,7 @@ export class PostsComponent implements OnInit {
   moreTenSeconds: boolean = false;
   getPostsError: boolean = false;
   @Output() postEmitter: EventEmitter<Post[]> = new EventEmitter();
+  @Output() postErrorEmitter: EventEmitter<boolean> = new EventEmitter();
 
   constructor(private service: PostsService) { }
 
@@ -49,11 +50,15 @@ export class PostsComponent implements OnInit {
       this.postEmitter.emit(posts);
     },
       (error) => {
-        this.getPostsError = true;         // TODO - emitir evento para remover itens da tela
+        this.getPostsError = true; 
+        this.postErrorEmitter.emit(this.getPostsError);              
       })
   }
 
-   private checksPostMoreTenSeconds() {
+  /**
+   * Método que exibe uma mensagem após 10 segundos caso os posts ainda não tenham sido carregados.
+   */
+  private checksPostMoreTenSeconds() {
     setTimeout(() => {
       this.moreTenSeconds = true;
     }, TEN_SECONDS)

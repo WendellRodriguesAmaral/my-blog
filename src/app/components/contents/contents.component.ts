@@ -19,6 +19,7 @@ export class ContentsComponent implements OnInit {
   category!:Categories;
   selectedAnotherPost$!: Observable<any>;
   selectedAnotherPost:boolean = false;
+  isPostsError: boolean = false;
 
   constructor(private service:PostsService) { }
 
@@ -36,21 +37,20 @@ export class ContentsComponent implements OnInit {
     });
 
     this.selectedAnotherPost$ = this.service.getselectedAnotherPostEvent();
-    this.selectedAnotherPost$.subscribe((selectedAnotherPost) => {
+    this.selectedAnotherPost$.subscribe((selectedAnotherPost:boolean) => {
       this.selectedAnotherPost = selectedAnotherPost;
     });
-
-
   }
 
   receivePosts(Anotherposts: Post[]): void {
     this.Anotherposts = Anotherposts;
-    console.log("receive posts chamado");
-    
   }  
+
+  receiveError(isError:boolean): void {
+    this.isPostsError = isError;
+  }
 
   undoFilter(getAllPosts: boolean): void {
     this.service.undoFilter(getAllPosts);
   }
-
 }
