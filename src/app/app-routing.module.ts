@@ -4,8 +4,19 @@ import { FeedComponent } from './components/feed/feed.component';
 
 const routes: Routes = [
   {
-    path: '', component: FeedComponent   
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'home'
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./components/home/home.module').then(module => module.HomeModule)
+  },
+  {
+    path: 'feed',
+    component: FeedComponent
   }
+
 ];
 
 @NgModule({

@@ -14,6 +14,9 @@ export class AnotherPostsComponent implements OnInit, OnChanges {
   @Input()
   isPostsError!: boolean;
 
+  searchingYet: boolean = true;
+
+
   private maxAnotherPosts: number = 5;
 
 
@@ -21,7 +24,7 @@ export class AnotherPostsComponent implements OnInit, OnChanges {
 
 
   ngOnInit(): void {
-    
+    this.Anotherposts = [];   
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -32,9 +35,18 @@ export class AnotherPostsComponent implements OnInit, OnChanges {
 
   private randomPosts(posts:Post[]): Post[] {
     let randomPosts: Post[] = [];
-    for (let i = 0; i < this.maxAnotherPosts; i++) {
-      let randomIndex = Math.floor(Math.random() * posts.length);
-      randomPosts.push(posts[randomIndex]);
+    this.searchingYet = false;
+    console.log('searchingYet', this.searchingYet);
+    if(posts.length > 0){
+
+      if(posts.length < this.maxAnotherPosts){
+        return posts;
+      }
+
+      for (let i = 0; i < this.maxAnotherPosts; i++) {
+        let randomIndex = Math.floor(Math.random() * posts.length);
+        randomPosts.push(posts[randomIndex]);
+      }
     }
     return randomPosts;
   }

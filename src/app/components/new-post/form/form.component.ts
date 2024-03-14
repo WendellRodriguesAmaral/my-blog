@@ -48,10 +48,6 @@ export class FormComponent implements OnInit {
       category: [Categories.Outros],
       privacy: ['publico']
     })
-
-    
-
-
   }
 
   getCategories() {
@@ -68,11 +64,11 @@ export class FormComponent implements OnInit {
     .pipe(finalize(() => this.loading = false))
       .subscribe((res: Post[]) => {
         console.log("RETORNO", res)
-        this.service.refreshPosts(res)
-        this.publisher(res.length); 
+        this.service.refreshPosts(res) //nos components de categorias e outros posts, implementar um subscribe para atualizar a lista de posts quando este evento aqui for emitido
+        this.publisher(res.length);  //aqui poderia passar nada no parametro se o receptor fosse um evento
       },
         (err) => {
-          console.error(err) //ANALISAR O QUE FAZER AQUI
+          console.error("TESte",err) //ANALISAR O QUE FAZER AQUI
         }
       )
   }

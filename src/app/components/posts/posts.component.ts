@@ -1,8 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { PostsService } from 'src/app/core/services/posts.service';
-import { debounceTime, finalize, tap } from 'rxjs/operators';
+import { Component,  EventEmitter, OnInit, Output } from '@angular/core';
+import { finalize } from 'rxjs/operators';
 import { Post } from 'src/app/shared/models/post.model';
 import { Observable } from 'rxjs';
+import { PostsService } from 'src/app/core/services/posts.service';
 
 const TEN_SECONDS = 10000;
 
@@ -11,7 +11,7 @@ const TEN_SECONDS = 10000;
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.scss']
 })
-export class PostsComponent implements OnInit {
+export class PostsComponent implements OnInit{
   posts: Post[] = [];
   loading: boolean = true;
   posts$!: Observable<Post[]>;
@@ -27,8 +27,6 @@ export class PostsComponent implements OnInit {
   ngOnInit(): void {
     this.posts$ = this.service.getPostsUpdated();
     this.posts$.subscribe((posts) => {
-      console.log(posts);
-
       this.posts = posts.reverse();
     });
 
@@ -49,7 +47,7 @@ export class PostsComponent implements OnInit {
       this.postSearched = true;
       this.postEmitter.emit(posts);
     },
-      (error) => {
+      error => {
         this.getPostsError = true; 
         this.postErrorEmitter.emit(this.getPostsError);              
       })
@@ -63,7 +61,5 @@ export class PostsComponent implements OnInit {
       this.moreTenSeconds = true;
     }, TEN_SECONDS)
   }
-
-
 
 }

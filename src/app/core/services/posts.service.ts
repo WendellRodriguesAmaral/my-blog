@@ -28,7 +28,7 @@ export class PostsService {
     console.log("tentando criar post");
 
     post.date = new Date();
-    post.author= "teste";
+    post.author= "1690447a-73c0-4399-a645-cd5a8aac864f"; // Usuario Wendell (aq ainda devo mudar muita coisa, primeiro fazer uma requisição pelo usuario, dps por seus amigos)
     console.log("Tentando enviar este post:", post);    
     
     return this.http.post<Post[]>(this.url+'/posts',post);
@@ -42,8 +42,6 @@ export class PostsService {
   getPostsByCategory(category:Categories){    
     return this.http.get<Post[]>(this.url+'/posts/category/'+category);
   }
-
-
 
   getselectedAnotherPostEvent(){
     return this.selectedAnotherPost.asObservable();
@@ -79,8 +77,8 @@ export class PostsService {
   }
 
   undoFilter(getAllPosts:boolean){
-    if(getAllPosts){
-      this.noFilter.next();//como eu tento limpar os filtros antes de fazer um novo filtro, esse if evita que nao faça outra chamada no back
+    if(getAllPosts){ // esse if evita que nao faça outra chamada no back
+      this.noFilter.next();
     }
     
     this.searchingEmit({searching:false,search:""});

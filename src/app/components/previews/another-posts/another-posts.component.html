@@ -1,7 +1,7 @@
 <div class="another-posts col-12 bg-white pt-2 pb-1">
     <b class="d-flex justify-content-center mb-3 fs-6">Outras publicações</b>
 
-    <div class="col-12 " *ngIf="Anotherposts; else loading">
+    <div class="col-12 " *ngIf="Anotherposts.length > 0; else loading">
         <ul>
             <li *ngFor="let post of Anotherposts;" (click)="showPost(post)">
                 <a>
@@ -14,7 +14,12 @@
     </div>
 
     <ng-template #loading>
-        <p *ngIf="!isPostsError" class="loading m-auto">
+       
+        <p *ngIf="!searchingYet" class="loading m-auto">
+           Nenhum post encontrado.
+        </p>
+
+        <p *ngIf="!isPostsError && searchingYet" class="loading m-auto">
             Carregando ...
         </p>
 

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  url: 'https://blog-api-aa6p.onrender.com'
+  url:'http://localhost:3001'
+  // url: 'https://blog-api-aa6p.onrender.com'
 };
 
 /*

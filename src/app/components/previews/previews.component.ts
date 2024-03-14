@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Post } from 'src/app/shared/models/post.model';
 
 @Component({
   selector: 'blog-previews',
@@ -9,10 +10,14 @@ export class PreviewsComponent implements OnInit {
   @Input()
   isPostsError!: boolean;
 
+  @Input()
+  Anotherposts!: Post[];
 
   constructor() { }
 
   ngOnInit(): void {
+    this.Anotherposts = [];
+    console.log(this.Anotherposts.length);    
   }
 
 }

@@ -22,6 +22,9 @@ export class PostComponent implements OnInit, OnChanges {
    * @param changes 
    */
   ngOnChanges(changes: SimpleChanges): void {
+
+    console.log(this.post);
+    
     if (changes.post) {
       this.http.get(this.post.image!).subscribe(
         () => { },

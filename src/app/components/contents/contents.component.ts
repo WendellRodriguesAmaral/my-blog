@@ -24,6 +24,7 @@ export class ContentsComponent implements OnInit {
   constructor(private service:PostsService) { }
 
   ngOnInit(): void {
+    this.Anotherposts = [];
     this.searching$ = this.service.searchingEvent();
     this.searching$.subscribe((searching) => {
       this.searching = searching.searching;

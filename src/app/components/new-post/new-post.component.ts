@@ -16,7 +16,7 @@ export class NewPostComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  publish(event:any){
+  publish(event:any){ //aqui em vez de usar essa propriedade, poderia usar um evento do tipo EventEmitter
     this.exitModal = event;
   }
 
