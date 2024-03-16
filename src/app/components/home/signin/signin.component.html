@@ -1,1 +1,29 @@
-<p>signin works!</p>
+<div class="container min-vh-100 m-auto d-flex justify-content-center align-items-center">
+
+    <section
+        class="login bg-white col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6 d-flex justify-content-center align-items-center flex-column">
+        <blog-logo></blog-logo>
+
+        <main class="col-12 d-flex justify-content-center align-items-center">
+            <form class="login__form col-10 d-flex justify-content-center align-items-center flex-column">
+
+                <div class="login__form__email">
+                    <span>Email</span>
+                    <input class="mt-1 mb-4" type="email">
+                </div>
+
+                <div class="login__form__password">
+                    <span>Senha</span>
+                    <input class="mt-1 mb-4" type="password">
+                </div>
+
+                <div class="login__form__submit">
+                    <button type="submit" routerLink="/feed">Login</button>
+                    <p class="p-0 m-0">
+                        Ainda não tem uma conta? <a routerLink="signup">Clique aqui</a>
+                    </p>
+                </div>
+            </form>
+        </main>
+    </section>
+</div>

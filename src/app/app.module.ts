@@ -16,6 +16,7 @@ import { SharedModule } from './shared/shared.module';
 import { PreviewsModule } from './components/previews/previews.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LogoComponent } from './shared/components/logo/logo.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ContentsComponent,
     PostsComponent,
     PostComponent,
-    FormComponent
+    FormComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
